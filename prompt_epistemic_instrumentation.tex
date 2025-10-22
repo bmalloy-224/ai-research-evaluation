@@ -20,7 +20,7 @@
 \maketitle
 
 \begin{abstract}
-Large language models increasingly mediate research discovery, yet their evaluative criteria remain implicit and unexamined. I introduce a prompt-engineered framework that operationalizes research evaluation as multi-dimensional epistemic mapping. I tasked three frontier AI systems with independently assessing 2,548 scientific papers under four distinct evaluative lenses: Cold (baseline prestige), Implementation (12-month deployability), Transformative (paradigm-shifting potential), and Toolmaker (methodological enabling). My results reveal near-zero overlap (6\%) between Implementation and Transformative selections despite strong intra-lens consensus (73\%), indicating orthogonal value dimensions. Systems exhibited persistent architectural signatures: Model A favored mathematical formalism, Model B prioritized systems-level integration, Model C emphasized capability creation. Critically, papers achieving universal consensus under prestige-based evaluation disappeared entirely under implementation criteria, demonstrating that dominant and deployable research occupy disjoint spaces. My framework also reveals that evaluation biases are fundamentally \textit{temporal}: each lens operates on a distinct horizon from immediate deployment to timeless infrastructure. I propose that systematic prompt variation functions as epistemic instrumentation—a reproducible method for surfacing latent value hierarchies in AI systems and enabling explicit value alignment in research assessment.
+Large language models increasingly mediate research discovery, yet their evaluative criteria remain implicit and unexamined. I introduce a prompt-engineered framework that operationalizes research evaluation as multi-dimensional epistemic mapping. I tasked three frontier AI systems with independently assessing 2,548 scientific papers under four distinct evaluative lenses: Cold (baseline prestige), Implementation (12-month deployability), Transformative (paradigm-shifting potential), and Toolmaker (methodological enabling). My results reveal near-zero overlap (0-6\%) between Implementation and Transformative selections despite variable intra-lens consensus (20-78\% across lenses), indicating orthogonal value dimensions. Systems exhibited persistent architectural signatures: Model A favored mathematical formalism, Model B prioritized systems-level integration, Model C emphasized capability creation. Critically, papers achieving universal consensus under prestige-based evaluation disappeared entirely under implementation criteria, demonstrating that dominant and deployable research occupy disjoint spaces. My framework also reveals that evaluation biases are fundamentally \textit{temporal}: each lens operates on a distinct horizon from immediate deployment to timeless infrastructure. I propose that systematic prompt variation functions as epistemic instrumentation—a reproducible method for surfacing latent value hierarchies in AI systems and enabling explicit value alignment in research assessment.
 \end{abstract}
 
 \textbf{License:} \textit{This work is licensed under a Creative Commons Attribution 4.0 International License.}
@@ -80,31 +80,35 @@ Each of three models independently produced Top 10 selections for each lens, yie
 
 \section{Results}
 
+\textbf{Our multi-lens analysis reveals that AI systems evaluate research through orthogonal value dimensions with varying degrees of consensus. The near-zero overlap between Implementation and Transformative selections (0-6\% across models) demonstrates that deployable and paradigm-shifting research occupy fundamentally disjoint spaces in AI evaluation. This orthogonality persists despite variable agreement within lenses, ranging from high consensus on methodological infrastructure (Toolmaker: 78\% mean overlap) to highly subjective notions of prestige (Cold: 20\% consensus). These findings indicate that AI models have internalized distinct, non-overlapping criteria for different forms of research value.}
+
 \subsection{Orthogonal Value Dimensions}
 
-Cross-lens analysis revealed near-zero overlap between Implementation and Transformative selections (mean 6\%, range 4-8\% across models), confirming these dimensions are functionally orthogonal. In contrast, Cold and Transformative lenses showed moderate overlap (22\%), reflecting shared emphasis on novelty.
+Cross-lens analysis revealed near-zero overlap between Implementation and Transformative selections (0-6\% across models), confirming these dimensions are functionally orthogonal. In contrast, Cold and Transformative lenses showed moderate overlap (19-25\%), reflecting shared emphasis on novelty and theoretical ambition.
 
 \begin{table}[htbp]
 \centering
-\caption{Cross-Lens Overlap (Model B - Anthropic)}
+\caption{Cross-Lens Overlap (Model B - Anthropic, Jaccard Similarity)}
 \label{tab:overlap}
 \begin{tabular}{lccc}
 \toprule
 & \textbf{Cold} & \textbf{Impl.} & \textbf{Trans.} \\
 \midrule
-\textbf{Cold} & 1.00 & 0.14 & 0.22 \\
-\textbf{Implementation} & 0.14 & 1.00 & 0.06 \\
-\textbf{Transformative} & 0.22 & 0.06 & 1.00 \\
-\textbf{Toolmaker} & 0.35 & 0.18 & 0.33 \\
+\textbf{Cold} & 1.00 & 0.05 & 0.22 \\
+\textbf{Implementation} & 0.05 & 1.00 & 0.00 \\
+\textbf{Transformative} & 0.22 & 0.00 & 1.00 \\
+\textbf{Toolmaker} & 0.08 & 0.09 & 0.11 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Notably, papers achieving universal consensus under the Cold lens (e.g., "A Theory of Everything," "200,000-Year-Old Denisovan Genome") were \textit{entirely absent} from Implementation selections. This demonstrates that prestige and deployability occupy disjoint evaluative spaces.
+Notably, papers achieving universal consensus under the Cold lens (e.g., "A Theory of Everything," "Aberrant E-I Balance in Major Depressive Disorder") were \textit{entirely absent} from Implementation selections. This demonstrates that prestige and deployability occupy disjoint evaluative spaces.
 
-\subsection{Strong Intra-Lens Consensus}
+\subsection{Strong Intra-Lens Consensus with Lens-Specific Variation}
 
-Despite architectural differences, models exhibited strong agreement within lenses (mean overlap 73\%). Five papers achieved 3/3 consensus under the Transformative lens:
+Models exhibited variable agreement within lenses (mean overlap 48\%, range 20-78\%). The Toolmaker lens showed highest consensus (78\% mean overlap), with Models A and C achieving perfect 10/10 agreement, suggesting clear shared understanding of methodological infrastructure. In contrast, the Cold lens showed lowest consensus (20\%), reflecting more subjective and culturally-contingent notions of "interestingness."
+
+Six papers achieved 3/3 consensus under the Transformative lens:
 
 \begin{itemize}
     \item Semantic Generalization of Shannon's Information Theory
@@ -112,13 +116,14 @@ Despite architectural differences, models exhibited strong agreement within lens
     \item Brain Cell Type Resource via Multi-Agent LLMs
     \item Cascade Combustion Ion Technology (Interstellar Propulsion)
     \item Five-Dimensional Delay Field Cosmology Model
+    \item A Theory of Everything
 \end{itemize}
 
 This convergence suggests these papers genuinely satisfy transformative criteria across different reasoning architectures.
 
 \subsection{Systematic Domain Bias}
 
-Cold lens selections over-represented theoretical physics (42\% of selections) relative to corpus representation (14\%). Conversely, social science fieldwork comprised 23\% of corpus but 0\% of Cold selections. Implementation lens corrected this bias: social science rose to 31\% of selections while physics dropped to 8\%.
+Cold lens selections over-represented theoretical physics and mathematics (30\% of selections) relative to corpus representation (approximately 14\%). Conversely, social science fieldwork comprised 23\% of corpus but 0\% of Cold selections. Implementation lens corrected this bias: social science rose to 31\% of selections while physics dropped to 8\%.
 
 \subsection{Persistent Architectural Signatures}
 
@@ -179,7 +184,7 @@ The four evaluative lenses can also be understood as probing distinct temporal h
     \item \textbf{Toolmaker Lens:} Timeless infrastructure enabling research across eras.
 \end{itemize}
 
-The low overlap between Implementation and Transformative selections (6\%) reflects these distinct temporal orientations. Universal consensus picks under Cold but absent in Implementation illustrate how temporal positioning constrains model evaluation. These findings suggest that AI evaluation biases are not only disciplinary but fundamentally temporal.
+The near-zero overlap between Implementation and Transformative selections (0-6\%) reflects these distinct temporal orientations. Universal consensus picks under Cold but absent in Implementation illustrate how temporal positioning constrains model evaluation. The exceptionally high Toolmaker consensus (78\%) suggests that identification of methodological infrastructure is less temporally contingent than other forms of value assessment. These findings suggest that AI evaluation biases are not only disciplinary but fundamentally temporal.
 
 \section{Discussion}
 
@@ -234,6 +239,7 @@ Future work should extend this approach beyond research evaluation to any domain
 \bibitem{liang2023holistic} P. Liang et al., "Holistic evaluation of language models," \textit{arXiv preprint arXiv:2211.09110}, 2023.
 \bibitem{perez2023discovering} E. Perez et al., "Discovering language model behaviors with model-written evaluations," in \textit{Proc. ACL}, 2023, pp. 13387-13415.
 \end{thebibliography}
+
 
 
 \appendix
