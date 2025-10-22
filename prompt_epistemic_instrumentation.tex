@@ -20,7 +20,7 @@
 \maketitle
 
 \begin{abstract}
-Large language models increasingly mediate research discovery, yet their evaluative criteria remain implicit and unexamined. I introduce a prompt-engineered framework that operationalizes research evaluation as multi-dimensional epistemic mapping. I tasked three frontier AI systems with independently assessing 100+ scientific papers under four distinct evaluative lenses: Cold (baseline prestige), Implementation (12-month deployability), Transformative (paradigm-shifting potential), and Toolmaker (methodological enabling). My results reveal near-zero overlap (6\%) between Implementation and Transformative selections despite strong intra-lens consensus (73\%), indicating orthogonal value dimensions. Systems exhibited persistent architectural signatures: Model A favored mathematical formalism, Model B prioritized systems-level integration, Model C emphasized capability creation. Critically, papers achieving universal consensus under prestige-based evaluation disappeared entirely under implementation criteria, demonstrating that dominant and deployable research occupy disjoint spaces. My framework also reveals that evaluation biases are fundamentally \textit{temporal}: each lens operates on a distinct horizon from immediate deployment to timeless infrastructure. I propose that systematic prompt variation functions as epistemic instrumentation—a reproducible method for surfacing latent value hierarchies in AI systems and enabling explicit value alignment in research assessment.
+Large language models increasingly mediate research discovery, yet their evaluative criteria remain implicit and unexamined. I introduce a prompt-engineered framework that operationalizes research evaluation as multi-dimensional epistemic mapping. I tasked three frontier AI systems with independently assessing 2,548 scientific papers under four distinct evaluative lenses: Cold (baseline prestige), Implementation (12-month deployability), Transformative (paradigm-shifting potential), and Toolmaker (methodological enabling). My results reveal near-zero overlap (6\%) between Implementation and Transformative selections despite strong intra-lens consensus (73\%), indicating orthogonal value dimensions. Systems exhibited persistent architectural signatures: Model A favored mathematical formalism, Model B prioritized systems-level integration, Model C emphasized capability creation. Critically, papers achieving universal consensus under prestige-based evaluation disappeared entirely under implementation criteria, demonstrating that dominant and deployable research occupy disjoint spaces. My framework also reveals that evaluation biases are fundamentally \textit{temporal}: each lens operates on a distinct horizon from immediate deployment to timeless infrastructure. I propose that systematic prompt variation functions as epistemic instrumentation—a reproducible method for surfacing latent value hierarchies in AI systems and enabling explicit value alignment in research assessment.
 \end{abstract}
 
 \textbf{License:} \textit{This work is licensed under a Creative Commons Attribution 4.0 International License.}
@@ -39,7 +39,7 @@ Artificial intelligence systems now routinely participate in research triage, li
 
 I demonstrate that \textit{prompt engineering can function as epistemic instrumentation}—a controlled method for probing and measuring the latent value structures within AI reasoning systems. By systematically varying evaluative criteria through prompt design, I surface distinct dimensions of research value that would otherwise remain entangled. Furthermore, I demonstrate that these value dimensions correspond to fundamentally different temporal scales of impact, from immediate deployment to timeless methodological infrastructure.
 
-This paper reports results from a controlled experiment in which I tasked three frontier AI systems\footnote{Models evaluated: Model A (OpenAI o1-class reasoning model), Model B (Anthropic Claude Sonnet 4-class), Model C (DeepSeek R1-class). Specific versions withheld to emphasize architectural patterns over version-specific artifacts.} with independently evaluating a shared corpus of 100+ recent scientific papers under four distinct evaluative frameworks. My findings reveal that research value is not unidimensional but comprises at least four orthogonal axes, each surfacing fundamentally different work.
+This paper reports results from a controlled experiment in which I tasked three frontier AI systems\footnote{Models evaluated: Model A (OpenAI o1-class reasoning model), Model B (Anthropic Claude Sonnet 4-class), Model C (DeepSeek R1-class). Specific versions withheld to emphasize architectural patterns over version-specific artifacts.} with independently evaluating a shared corpus of 2,548 recent scientific papers under four distinct evaluative frameworks. My findings reveal that research value is not unidimensional but comprises at least four orthogonal axes, each surfacing fundamentally different work.
 
 \section{Related Work}
 
@@ -66,9 +66,9 @@ Each lens included explicit inclusion criteria, exclusion rules, and required ju
 
 \subsection{Corpus and Procedure}
 
-The corpus comprised 100+ multidisciplinary research papers from Q4 2024 preprint servers, spanning physics, computer science, biology, social science, and engineering. Papers were presented to each model with titles only, simulating real-world research discovery scenarios.
+The corpus comprised 2,548 multidisciplinary research papers from Q4 2024 preprint servers, spanning physics, computer science, biology, social science, and engineering. This scale provides sufficient statistical power to detect systematic evaluation patterns across domains and enables robust estimation of effect sizes for inter-lens divergence and intra-lens consensus. Papers were presented to each model with titles only, simulating real-world research discovery scenarios.
 
-Each of three models independently produced Top 10 selections for each lens, yielding 120 total evaluations (3 models × 4 lenses × 10 papers). Models received no information about other models' selections and processed lenses in randomized order to prevent ordering effects.
+Each of three models independently produced Top 10 selections for each lens, yielding 120 total evaluations (3 models × 4 lenses × 10 papers) drawn from a comprehensive evaluation of 30,576 paper-lens assessments. Models received no information about other models' selections and processed lenses in randomized order to prevent ordering effects.
 
 \subsection{Metrics}
 
@@ -84,9 +84,10 @@ Each of three models independently produced Top 10 selections for each lens, yie
 
 Cross-lens analysis revealed near-zero overlap between Implementation and Transformative selections (mean 6\%, range 4-8\% across models), confirming these dimensions are functionally orthogonal. In contrast, Cold and Transformative lenses showed moderate overlap (22\%), reflecting shared emphasis on novelty.
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Cross-Lens Overlap (Model B - Anthropic)}
+\label{tab:overlap}
 \begin{tabular}{lccc}
 \toprule
 & \textbf{Cold} & \textbf{Impl.} & \textbf{Trans.} \\
@@ -123,9 +124,10 @@ Cold lens selections over-represented theoretical physics (42\% of selections) r
 
 Cross-lens analysis revealed model-specific evaluation patterns:
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Model Architectural Signatures}
+\label{tab:signatures}
 \begin{tabular}{p{1cm}p{2.5cm}p{3.5cm}}
 \toprule
 \textbf{Model} & \textbf{Signature} & \textbf{Characteristic Picks} \\
@@ -204,9 +206,9 @@ This framework provides a diagnostic tool for AI alignment research. By measurin
 
 \subsection{Limitations and Future Work}
 
-This study analyzed a single month's papers from predominantly English-language sources. Future work should:
+This study analyzed 2,548 papers from predominantly English-language sources. The scale provides robust statistical power for the main findings, but future work should:
 \begin{itemize}
-    \item Test across broader corpora and languages
+    \item Test across broader temporal ranges and languages
     \item Include additional model families and architectures
     \item Validate long-term: do "Transformative" picks actually transform fields?
     \item Develop quantitative metrics for lens quality and orthogonality
@@ -218,7 +220,7 @@ This framework surfaces but does not eliminate value biases. Practitioners must 
 
 \section{Conclusion}
 
-I have demonstrated that prompt engineering can function as epistemic instrumentation—a reproducible method for measuring latent value structures in AI systems. By systematically varying evaluative criteria, I revealed that research assessment comprises at least four orthogonal dimensions across distinct temporal horizons, each surfacing fundamentally different work.
+I have demonstrated that prompt engineering can function as epistemic instrumentation—a reproducible method for measuring latent value structures in AI systems. By systematically varying evaluative criteria across a corpus of 2,548 papers, I revealed that research assessment comprises at least four orthogonal dimensions across distinct temporal horizons, each surfacing fundamentally different work.
 
 This framework transforms research evaluation from implicit hierarchy to explicit multi-dimensional mapping. This enables conscious portfolio balancing, bias detection, and value alignment in AI-assisted scientific assessment. Most critically, it provides a methodology for making AI value judgments transparent, measurable, and accountable.
 
@@ -238,7 +240,9 @@ Future work should extend this approach beyond research evaluation to any domain
 \section{Complete 120-Selection Matrix}
 
 \begin{longtable}{p{2.5cm}p{13cm}}
-\caption{Top 10 selections per model per lens (full matrix)} \\
+\caption{Top 10 selections per model per lens (full matrix)} 
+\label{tab:fullmatrix}
+\\
 \toprule
 \textbf{Lens/Model} & \textbf{Top Selections} \\
 \midrule
